@@ -1,9 +1,22 @@
-import styles from "../styles/Nav.module.css";
+import navStyles from "../styles/Nav.module.css";
+import Pill from "./Pill";
+import pillStyles from "../styles/Pill.module.css";
 
-const Nav = function () {
+
+const Nav = function ({ cartItems }) {
     return (
-        <nav className={styles['app-nav']}>
-            <h1 className={styles['app-nav__logo']}>Gabriel's Bistro</h1>
+        <nav className={navStyles['app-nav']}>
+            <h1 className={navStyles['app-nav__logo']}>
+                Gabriel's Bistro
+            </h1>
+            <Pill>
+                Your Cart
+                <Pill
+                    customClass={`${pillStyles['pill--red']} ${pillStyles['pill--small']}`}
+                >
+                    {cartItems || 0}
+                </Pill>
+            </Pill>
         </nav>
     );
 };
