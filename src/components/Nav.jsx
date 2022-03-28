@@ -18,7 +18,7 @@ const Nav = function ({ cartItems }) {
                 <Pill
                     customClass={`${pillStyles['pill--red']} ${pillStyles['pill--small']}`}
                 >
-                    {normalizedCartItems}
+                    <p>{normalizedCartItems}</p>
                 </Pill>
             </Pill>
         </nav>

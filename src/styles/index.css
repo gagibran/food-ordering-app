@@ -2,11 +2,17 @@
 
 :root {
     --red: #922903;
+    --red-transparent: #9229038a;
     --dark-red: #461503;
-    --black-transparent: #0000008a;
+    --black-transparent: #000000c4;
+    --black-invisible: #0000008a;
 }
 
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
+}
+
+p {
+    margin: 0;
 }

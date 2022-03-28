@@ -1,8 +1,8 @@
 .pill {
     display: flex;
-    background-color: var(--black-transparent);
+    background-color: var(--black-invisible);
     border-radius: 23px;
-    padding: 2px 10px;
+    padding: 5px 10px;
     color: white;
     align-items: center;
     gap: 10px;
@@ -15,4 +15,12 @@
 .pill--small {
     padding: 2px 10px;
     border-radius: 50px;
+}
+
+.pill:hover {
+    background-color: var(--black-transparent);
+}
+
+.pill:hover .pill--red {
+    background-color: var(--red-transparent);
 }
