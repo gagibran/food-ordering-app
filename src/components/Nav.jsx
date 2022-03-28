@@ -4,17 +4,21 @@ import pillStyles from "../styles/Pill.module.css";
 
 
 const Nav = function ({ cartItems }) {
+    let normalizedCartItems = '0';
+    if (cartItems) {
+        normalizedCartItems = cartItems > 99 ? '99+' : '' + cartItems;
+    }
     return (
         <nav className={navStyles['app-nav']}>
             <h1 className={navStyles['app-nav__logo']}>
                 Gabriel's Bistro
             </h1>
             <Pill>
-                Your Cart
+                <p className={navStyles['app-nav__text']}>Your Cart</p>
                 <Pill
                     customClass={`${pillStyles['pill--red']} ${pillStyles['pill--small']}`}
                 >
-                    {cartItems || 0}
+                    {normalizedCartItems}
                 </Pill>
             </Pill>
         </nav>

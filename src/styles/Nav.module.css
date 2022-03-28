@@ -7,11 +7,28 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: var(--red);
+    background: linear-gradient(var(--dark-red), var(--red));
 }
 
 .app-nav .app-nav__logo {
+    text-align: center;
     font-weight: 700;
     color: white;
     font-size: 2.3rem;
+}
+
+.app-nav .app-nav__text {
+    font-size: 80%;
+}
+
+@media (max-width: 620px) {
+    .app-nav {
+        flex-direction: column;
+        height: unset;
+        padding-bottom: 20px;
+    }
+
+    .app-nav .app-nav__logo {
+        font-size: 1.8rem;
+    }
 }
