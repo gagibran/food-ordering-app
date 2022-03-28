@@ -13,7 +13,7 @@ const Nav = function ({ cartItems }) {
             <h1 className={navStyles['app-nav__logo']}>
                 Gabriel's Bistro
             </h1>
-            <Pill>
+            <Pill customClass={`${pillStyles['pill--clickable']}`}>
                 <p className={navStyles['app-nav__text']}>Your Cart</p>
                 <Pill
                     customClass={`${pillStyles['pill--red']} ${pillStyles['pill--small']}`}

@@ -17,6 +17,10 @@
     border-radius: 50px;
 }
 
+.pill--clickable {
+    cursor: pointer;
+}
+
 .pill:hover {
     background-color: var(--black-transparent);
 }
