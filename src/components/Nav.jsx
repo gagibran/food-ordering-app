@@ -2,7 +2,6 @@ import navStyles from "../styles/Nav.module.css";
 import Pill from "./Pill";
 import pillStyles from "../styles/Pill.module.css";
 
-
 const Nav = function ({ cartItems }) {
     let normalizedCartItems = '0';
     if (cartItems) {

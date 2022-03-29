@@ -8,6 +8,7 @@
     justify-content: space-around;
     align-items: center;
     background: linear-gradient(var(--dark-red), var(--red));
+    z-index: 999;
 }
 
 .app-nav .app-nav__logo {

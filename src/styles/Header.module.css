@@ -1,0 +1,10 @@
+.app-header {
+    overflow: hidden;
+}
+
+.app-header img {
+    width: 120vw;
+    height: 500px;
+    object-fit: cover;
+    transform: rotate(-5deg) translate(-10%, -15%);
+}
