@@ -1,3 +1,14 @@
 .card {
-    display: flex;
+    text-align: center;
+    color: white;
+    background-color: var(--dark);
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 30px black;
+    padding: 30px 5%;
+    margin: 0 7%;
+}
+
+.card--y-translated {
+    transform: translateY(-200px);
 }

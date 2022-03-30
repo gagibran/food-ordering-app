@@ -4,11 +4,14 @@
     --red: #922903;
     --red-transparent: #9229038a;
     --dark-red: #461503;
+    --dark: #302f2f;
+    --darker: #252525;
     --black-transparent: #000000c4;
     --black-invisible: #0000008a;
 }
 
 body {
+    background-color: var(--darker);
     margin: 0;
     font-family: 'Poppins', sans-serif;
 }
