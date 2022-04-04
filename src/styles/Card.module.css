@@ -1,7 +1,7 @@
 .card {
     text-align: center;
-    color: white;
-    background-color: var(--dark);
+    color: var(--dark);
+    background-color: var(--light);
     width: 400px;
     border-radius: 10px;
     box-shadow: 0px 5px 30px black;
@@ -9,6 +9,19 @@
     margin: 0 7%;
 }
 
-.card--y-translated {
+.card--dark {
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+.card--y-200px-translated {
     transform: translateY(-200px);
+}
+
+.card--y-100px-translated {
+    transform: translateY(-100px);
+}
+
+.card--less-padding {
+    padding: 15px 2%;
 }

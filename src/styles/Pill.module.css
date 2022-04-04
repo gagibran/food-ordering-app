@@ -3,7 +3,7 @@
     background-color: var(--black-invisible);
     border-radius: 23px;
     padding: 5px 10px;
-    color: white;
+    color: var(--light);
     align-items: center;
     gap: 10px;
 }

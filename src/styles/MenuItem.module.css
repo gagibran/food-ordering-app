@@ -1,0 +1,8 @@
+.menu-item {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+}
+
+.menu-item > .menu-item__price {
+    grid-column: 3 / 4;
+}
