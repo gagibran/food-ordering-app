@@ -5,10 +5,12 @@
     --red: #922903;
     --red-transparent: #9229038a;
     --dark-red: #461503;
+    --light-dark: #a5a1a1;
     --dark: #302f2f;
     --darker: #252525;
     --black-transparent: #000000c4;
     --black-invisible: #0000008a;
+    --transition-time: 0.3s
 }
 
 body {

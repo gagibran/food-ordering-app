@@ -1,19 +1,23 @@
 import styles from "../styles/MenuItem.module.css";
 
 const MenuItem = function ({ food, description, price }) {
+    const formHandler = function (e) {
+        e.preventDefault();
+    };
+
     return (
-        <div className={styles['menu-item']}>
+        <form className={styles['menu-item']} onSubmit={formHandler}>
             <div className={styles['menu-item__food']}>
                 <h4>{food}</h4>
                 <p>{description}</p>
                 <p>{price}</p>
             </div>
             <div className={styles['menu-item__price']}>
+                <input id="amount" type="number" max={99} min={0} placeholder=" " />
                 <label htmlFor="amount">Amount</label>
-                <input type="number" max={99} min={0} value={0} />
-                <button type="button">Add</button>
+                <button type="submit">Add</button>
             </div>
-        </div>
+        </form>
     );
 };
 
