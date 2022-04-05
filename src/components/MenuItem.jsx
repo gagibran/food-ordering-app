@@ -1,22 +1,35 @@
-import styles from "../styles/MenuItem.module.css";
+import menuItemStyles from "../styles/MenuItem.module.css";
+import pillStyles from "../styles/Pill.module.css";
 
-const MenuItem = function ({ food, description, price }) {
+const MenuItem = function ({ food, description, price, inputId }) {
     const formHandler = function (e) {
         e.preventDefault();
     };
 
     return (
-        <form className={styles['menu-item']} onSubmit={formHandler}>
-            <div className={styles['menu-item__food']}>
+        <form className={menuItemStyles['menu-item']} onSubmit={formHandler}>
+            <div className={menuItemStyles['menu-item__food']}>
                 <h4>{food}</h4>
                 <p>{description}</p>
-                <p>{price}</p>
+                <p>${price}</p>
             </div>
-            <div className={styles['menu-item__price']}>
-                <input id="amount" type="number" max={99} min={0} placeholder=" " />
-                <label htmlFor="amount">Amount</label>
-                <button type="submit">Add</button>
+            <div className={menuItemStyles['menu-item__price']}>
+                <input 
+                    id={'amount' + inputId} 
+                    type="number"
+                    max={99}
+                    min={1}
+                    placeholder=" "
+                />
+                <label htmlFor={'amount' + inputId}>Amount</label>
+                <button
+                    className={`${menuItemStyles['menu-item__button']} ${pillStyles['pill']} ${pillStyles['pill--red']} ${pillStyles['pill--clickable']}`} 
+                    type="submit"
+                >
+                    Add
+                </button>
             </div>
+            <hr />
         </form>
     );
 };

@@ -1,21 +1,28 @@
 .menu-item {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 100px;
 }
 
 .menu-item > .menu-item__food,
 .menu-item > .menu-item__price {
     display: flex;
     flex-direction: column;
-    text-align: left;
 }
 
 .menu-item > .menu-item__food {
     gap: 15px;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.menu-item > .menu-item__food > p:nth-of-type(2) {
+    color: var(--red);
+    font-weight: 700;
 }
 
 .menu-item > .menu-item__price {
-    grid-column: 3 / 4;
+    align-items: flex-end;
 }
 
 .menu-item > .menu-item__price > label {
@@ -45,8 +52,48 @@
     border-color: var(--dark);
 }
 
-.menu-item > .menu-item__price > button {
+.menu-item > .menu-item__price > .menu-item__button {
     order: 3;
     margin-top: 30px;
-    cursor: pointer;
+}
+
+.menu-item > .menu-item__price > .menu-item__button,
+.menu-item > .menu-item__price > input {
+    width: 150px;
+}
+
+.menu-item > hr {
+    grid-column: 1 / -1;
+    width: 100%;
+    border-top: 1px solid var(--light-dark);
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 540px) {
+    .menu-item {
+        grid-template-areas:
+                    "food food food"
+                    "price price price"
+                    "division division division";
+    }
+
+    .menu-item > .menu-item__food,
+    .menu-item > .menu-item__price {
+        justify-self: center;
+        align-items: center;
+    }
+    
+    .menu-item > .menu-item__food {
+        text-align: center;
+        grid-area: food;
+    }
+
+    .menu-item > .menu-item__price {
+        grid-area: price;
+    }
+
+    .menu-item > hr {
+        grid-area: division;
+    }
 }

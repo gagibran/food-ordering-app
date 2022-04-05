@@ -6,6 +6,7 @@
     color: var(--light);
     align-items: center;
     gap: 10px;
+    justify-content: center;
 }
 
 .pill--red {
@@ -25,6 +26,7 @@
     background-color: var(--black-transparent);
 }
 
-.pill:hover .pill--red {
-    background-color: var(--red-transparent);
+.pill:hover .pill--red,
+.pill--red:hover {
+    background-color: var(--dark-red);
 }
