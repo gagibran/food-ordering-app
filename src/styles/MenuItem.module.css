@@ -39,6 +39,7 @@
     border-bottom: 1.5px solid var(--light-dark);
     font-size: 0.9rem;
     transition: border-color var(--transition-time);
+    text-align: right;
 }
 
 .menu-item > .menu-item__price > input:focus + label,
