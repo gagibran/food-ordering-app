@@ -84,7 +84,7 @@
         justify-self: center;
         align-items: center;
     }
-    
+
     .menu-item > .menu-item__food {
         text-align: center;
         grid-area: food;
