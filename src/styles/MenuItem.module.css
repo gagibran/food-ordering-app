@@ -4,65 +4,6 @@
     column-gap: 100px;
 }
 
-.menu-item > .menu-item__food,
-.menu-item > .menu-item__price {
-    display: flex;
-    flex-direction: column;
-}
-
-.menu-item > .menu-item__food {
-    gap: 15px;
-    align-items: flex-start;
-    text-align: left;
-}
-
-.menu-item > .menu-item__food > p:nth-of-type(2) {
-    color: var(--red);
-    font-weight: 700;
-}
-
-.menu-item > .menu-item__price {
-    align-items: flex-end;
-}
-
-.menu-item > .menu-item__price > label {
-    order: 1;
-    color: var(--light-dark);
-    transform: translateY(13px);
-    transition: transform var(--transition-time), color var(--transition-time);
-}
-
-.menu-item > .menu-item__price > input {
-    order: 2;
-    border: none;
-    background-color: var(--light);
-    border-bottom: 1.5px solid var(--light-dark);
-    font-size: 0.9rem;
-    transition: border-color var(--transition-time);
-    text-align: right;
-}
-
-.menu-item > .menu-item__price > input:focus + label,
-.menu-item > .menu-item__price > input:not(:placeholder-shown) + label {
-    transform: translateY(-1px);
-    color: var(--dark);
-}
-
-.menu-item > .menu-item__price > input:focus {
-    outline: none;
-    border-color: var(--dark);
-}
-
-.menu-item > .menu-item__price > .menu-item__button {
-    order: 3;
-    margin-top: 30px;
-}
-
-.menu-item > .menu-item__price > .menu-item__button,
-.menu-item > .menu-item__price > input {
-    width: 150px;
-}
-
 .menu-item > hr {
     grid-column: 1 / -1;
     width: 100%;
@@ -74,24 +15,9 @@
 @media (max-width: 540px) {
     .menu-item {
         grid-template-areas:
-                    "food food food"
+                    "description description description"
                     "price price price"
                     "division division division";
-    }
-
-    .menu-item > .menu-item__food,
-    .menu-item > .menu-item__price {
-        justify-self: center;
-        align-items: center;
-    }
-
-    .menu-item > .menu-item__food {
-        text-align: center;
-        grid-area: food;
-    }
-
-    .menu-item > .menu-item__price {
-        grid-area: price;
     }
 
     .menu-item > hr {

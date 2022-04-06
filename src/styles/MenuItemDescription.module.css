@@ -1,0 +1,21 @@
+.menu-item-description {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.menu-item-description > p:nth-of-type(2) {
+    color: var(--red);
+    font-weight: 700;
+}
+
+@media (max-width: 540px) {
+    .menu-item-description {
+        justify-self: center;
+        align-items: center;
+        text-align: center;
+        grid-area: description;
+    }
+}

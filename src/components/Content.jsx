@@ -40,11 +40,15 @@ const MENU_ITEMS = [
 const Content = function () {
     return (
         <section className={contentStyles['app-content']}>
-            <Card customClass={`${cardStyles['card--dark']} ${cardStyles[`card--y-${CARDS_Y_OFFSET_BASE * 2}px-translated`]}`}>
+            <Card
+                customClass={`${cardStyles['card--dark']} ${cardStyles[`card--y-${CARDS_Y_OFFSET_BASE * 2}px-translated`]}`}
+            >
                 <h2>Delicious Italian Food!</h2>
                 <p>Choose the best of the Italian cousine and have it delivered at your door in no time!</p>
             </Card>
-            <Card customClass={`${cardStyles[`card--y-${CARDS_Y_OFFSET_BASE}px-translated`]} ${cardStyles['card--less-padding']}`}>
+            <Card
+                customClass={`${cardStyles[`card--y-${CARDS_Y_OFFSET_BASE}px-translated`]} ${cardStyles['card--less-padding']}`}
+            >
                 {MENU_ITEMS.map(item => {
                     return (
                         <MenuItem

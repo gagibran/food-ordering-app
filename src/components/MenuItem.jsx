@@ -1,5 +1,6 @@
 import menuItemStyles from "../styles/MenuItem.module.css";
-import pillStyles from "../styles/Pill.module.css";
+import MenuItemDescription from "./MenuItemDescription";
+import MenuItemPrice from "./MenuItemPrice";
 
 const MenuItem = function ({ food, description, price, inputId }) {
     const formHandler = function (e) {
@@ -7,28 +8,16 @@ const MenuItem = function ({ food, description, price, inputId }) {
     };
 
     return (
-        <form className={menuItemStyles['menu-item']} onSubmit={formHandler}>
-            <div className={menuItemStyles['menu-item__food']}>
-                <h4>{food}</h4>
-                <p>{description}</p>
-                <p>${price}</p>
-            </div>
-            <div className={menuItemStyles['menu-item__price']}>
-                <input 
-                    id={'amount' + inputId} 
-                    type="number"
-                    max={99}
-                    min={1}
-                    placeholder=" "
-                />
-                <label htmlFor={'amount' + inputId}>Amount</label>
-                <button
-                    className={`${menuItemStyles['menu-item__button']} ${pillStyles['pill']} ${pillStyles['pill--red']} ${pillStyles['pill--clickable']}`} 
-                    type="submit"
-                >
-                    Add
-                </button>
-            </div>
+        <form
+            className={menuItemStyles['menu-item']}
+            onSubmit={formHandler}
+        >
+            <MenuItemDescription
+                food={food}
+                description={description}
+                price={price}
+            />
+            <MenuItemPrice inputId={inputId} />
             <hr />
         </form>
     );
