@@ -1,7 +1,7 @@
-import Card from "./Card";
+import CartModal from "./CartModal";
+import RestaurantDescription from "./RestaurantDescription";
+import Menu from "./Menu";
 import contentStyles from "../styles/Content.module.css";
-import cardStyles from "../styles/Card.module.css";
-import MenuItem from "./MenuItem";
 
 const CARDS_Y_OFFSET_BASE = 100;
 const MENU_ITEMS = [
@@ -40,27 +40,9 @@ const MENU_ITEMS = [
 const Content = function () {
     return (
         <section className={contentStyles['app-content']}>
-            <Card
-                customClass={`${cardStyles['card--dark']} ${cardStyles[`card--y-${CARDS_Y_OFFSET_BASE * 2}px-translated`]}`}
-            >
-                <h2>Delicious Italian Food!</h2>
-                <p>Choose the best of the Italian cousine and have it delivered at your door in no time!</p>
-            </Card>
-            <Card
-                customClass={`${cardStyles[`card--y-${CARDS_Y_OFFSET_BASE}px-translated`]} ${cardStyles['card--less-padding']}`}
-            >
-                {MENU_ITEMS.map(item => {
-                    return (
-                        <MenuItem
-                            key={item.id}
-                            inputId={item.id}
-                            food={item.foodName}
-                            description={item.description}
-                            price={item.price}
-                        />
-                    );
-                })}
-            </Card>
+            <CartModal foodName="test" />
+            <RestaurantDescription componentYOffset={CARDS_Y_OFFSET_BASE * 2} />
+            <Menu componentYOffset={CARDS_Y_OFFSET_BASE} menuItems={MENU_ITEMS} />
         </section>
     );
 };

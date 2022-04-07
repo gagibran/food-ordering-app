@@ -4,9 +4,11 @@ import pillStyles from "../styles/Pill.module.css";
 
 const Nav = function ({ cartItems }) {
     let normalizedCartItems = '0';
+
     if (cartItems) {
         normalizedCartItems = cartItems > 99 ? '99+' : '' + cartItems;
     }
+
     return (
         <nav className={navStyles['app-nav']}>
             <h1 className={navStyles['app-nav__logo']}>
