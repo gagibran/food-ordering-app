@@ -8,19 +8,32 @@
     margin: 0 7%;
 }
 
-.card--dark {
+.card.card--dark {
     background-color: var(--dark);
     color: var(--light);
 }
 
-.card--y-200px-translated {
+.card.card--y-200px-translated {
     transform: translateY(-200px);
 }
 
-.card--y-100px-translated {
+.card.card--y-100px-translated {
     transform: translateY(-100px);
 }
 
-.card--less-padding {
+.card.card--less-padding {
     padding: 15px 2%;
+}
+
+.card.card--absolute {
+    position: fixed;
+    z-index: 4;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card.card--hidden {
+    display: none;
 }

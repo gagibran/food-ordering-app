@@ -1,11 +1,23 @@
+import { node, string, func } from "prop-types";
 import styles from "../styles/Pill.module.css";
 
-const Pill = function ({ children, customClass }) {
+const Pill = function ({ children, customClass, onClick }) {
     return (
-        <div className={styles['pill'] + ' ' + customClass}>
+        <div onClick={onClick} className={`${styles['pill']} ${customClass}`.trim()}>
             {children}
         </div>
     );
+};
+
+Pill.propTypes = {
+    children: node,
+    customClass: string,
+    onClick: func
+};
+
+Pill.defaultProps = {
+    customClass: '',
+    onClick: undefined
 };
 
 export default Pill;

@@ -10,7 +10,7 @@
     --darker: #252525;
     --black-transparent: #000000c4;
     --black-invisible: #0000008a;
-    --modal-background: #0000006e;
+    --overlay-background: #0000006e;
     --transition-time: 0.3s
 }
 
@@ -36,4 +36,8 @@ hr {
     border-bottom: none;
     border-left: none;
     border-right: none
+}
+
+body.no-overflow {
+    overflow: hidden;
 }

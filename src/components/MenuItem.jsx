@@ -1,16 +1,12 @@
+import { number, string } from "prop-types";
 import menuItemStyles from "../styles/MenuItem.module.css";
 import MenuItemDescription from "./MenuItemDescription";
 import MenuItemPrice from "./MenuItemPrice";
 
 const MenuItem = function ({ food, description, price, inputId }) {
-    const formHandler = function (e) {
-        e.preventDefault();
-    };
-
     return (
-        <form
+        <div
             className={menuItemStyles['menu-item']}
-            onSubmit={formHandler}
         >
             <MenuItemDescription
                 food={food}
@@ -19,8 +15,15 @@ const MenuItem = function ({ food, description, price, inputId }) {
             />
             <MenuItemPrice inputId={inputId} />
             <hr />
-        </form>
+        </div>
     );
+};
+
+MenuItem.propTypes = {
+    food: string.isRequired,
+    description: string.isRequired,
+    price: number.isRequired,
+    inputId: number.isRequired
 };
 
 export default MenuItem;

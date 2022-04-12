@@ -1,3 +1,4 @@
+import { number, array } from "prop-types";
 import Card from "./Card";
 import MenuItem from "./MenuItem";
 import cardStyles from "../styles/Card.module.css";
@@ -20,6 +21,11 @@ const Menu = function ({ componentYOffset, menuItems }) {
             })}
         </Card>
     );
+};
+
+Menu.propTypes = {
+    componentYOffset: number.isRequired,
+    menuItems: array.isRequired
 };
 
 export default Menu;

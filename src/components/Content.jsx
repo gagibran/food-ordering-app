@@ -1,4 +1,3 @@
-import CartModal from "./CartModal";
 import RestaurantDescription from "./RestaurantDescription";
 import Menu from "./Menu";
 import contentStyles from "../styles/Content.module.css";
@@ -40,9 +39,13 @@ const MENU_ITEMS = [
 const Content = function () {
     return (
         <section className={contentStyles['app-content']}>
-            <CartModal foodName="test" />
-            <RestaurantDescription componentYOffset={CARDS_Y_OFFSET_BASE * 2} />
-            <Menu componentYOffset={CARDS_Y_OFFSET_BASE} menuItems={MENU_ITEMS} />
+            <RestaurantDescription
+                componentYOffset={CARDS_Y_OFFSET_BASE * 2}
+            />
+            <Menu
+                componentYOffset={CARDS_Y_OFFSET_BASE}
+                menuItems={MENU_ITEMS}
+            />
         </section>
     );
 };

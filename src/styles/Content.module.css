@@ -8,3 +8,7 @@
 .app-content h2 {
     margin-bottom: 20px;
 }
+
+.app-content.app-content--overflow-hidden {
+    overflow: hidden;
+}

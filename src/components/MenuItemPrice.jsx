@@ -1,11 +1,19 @@
+import { number } from "prop-types";
 import menuItemPriceStyles from "../styles/MenuItemPrice.module.css";
 import pillStyles from "../styles/Pill.module.css";
 
 const MenuItemPrice = function ({ inputId }) {
+    const formHandler = function (e) {
+        e.preventDefault();
+    };
+
     return (
-        <div className={menuItemPriceStyles['menu-item-price']}>
+        <form
+            className={menuItemPriceStyles['menu-item-price']}
+            onSubmit={formHandler}
+        >
             <input
-                id={'amount' + inputId} 
+                id={'amount' + inputId}
                 type="number"
                 max={99}
                 min={1}
@@ -22,8 +30,12 @@ const MenuItemPrice = function ({ inputId }) {
             >
                 Add
             </button>
-        </div>
+        </form>
     );
+};
+
+MenuItemPrice.propTypes = {
+    inputId: number.isRequired
 };
 
 export default MenuItemPrice;

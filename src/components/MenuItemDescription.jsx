@@ -1,3 +1,4 @@
+import { number, string } from "prop-types";
 import styles from "../styles/MenuItemDescription.module.css";
 
 const MenuItemFoodDescription = function ({ food, description, price }) {
@@ -8,6 +9,12 @@ const MenuItemFoodDescription = function ({ food, description, price }) {
             <p>${price}</p>
         </div>
     );
+};
+
+MenuItemFoodDescription.propTypes = {
+    food: string.isRequired,
+    description: string.isRequired,
+    price: number.isRequired,
 };
 
 export default MenuItemFoodDescription;

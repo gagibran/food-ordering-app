@@ -1,3 +1,4 @@
+import { number } from "prop-types";
 import Card from "./Card";
 import cardStyles from "../styles/Card.module.css";
 
@@ -10,6 +11,10 @@ const RestaurantDescription = function ({ componentYOffset }) {
             <p>Choose the best of the Italian cousine and have it delivered at your door in no time!</p>
         </Card>
     );
+};
+
+RestaurantDescription.propTypes = {
+    componentYOffset: number.isRequired
 };
 
 export default RestaurantDescription;

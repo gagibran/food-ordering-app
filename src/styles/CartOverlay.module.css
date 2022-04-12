@@ -1,4 +1,4 @@
-.cart-modal {
+.cart-overlay {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,10 +7,10 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: var(--modal-background);
-    z-index: 999999;
+    background-color: var(--overlay-background);
+    z-index: 3;
 }
 
-.cart-modal.hidden {
+.cart-overlay.cart-overlay--hidden {
     display: none;
 }
