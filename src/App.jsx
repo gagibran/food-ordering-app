@@ -1,13 +1,16 @@
+import { useState } from "react";
 import Nav from "./components/Nav";
 import Header from "./components/Header";
 import Content from "./components/Content";
 
 const App = function () {
+    const [cartItems, setCartItems] = useState([]);
+
     return (
         <>
-            <Nav />
+            <Nav cartItems={cartItems} />
             <Header />
-            <Content />
+            <Content setCartItems={setCartItems} />
         </>
     );
 };

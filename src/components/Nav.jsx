@@ -1,12 +1,15 @@
 import { useState } from "react";
-import { object } from "prop-types";
+import { array } from "prop-types";
+import CartButton from "./CartButton";
 import Cart from "./Cart";
-import CartModal from "./CartModal";
 import navStyles from "../styles/Nav.module.css";
 
 const Nav = function ({ cartItems }) {
-    const cartItemsCount = cartItems?.length > 99 ? '99+' : '0';
     const [isCartHidden, setIsCartHidden] = useState(true);
+
+    let cartItemsCount = '0';
+    const totalItems = cartItems.reduce((acc, cartItem) => acc + cartItem.foodAmount, 0);
+    cartItemsCount = totalItems > 99 ? '99+' : '' + totalItems;
 
     const toggleCart = function () {
         setIsCartHidden(!isCartHidden);
@@ -15,15 +18,16 @@ const Nav = function ({ cartItems }) {
 
     return (
         <nav className={navStyles['app-nav']}>
-            <CartModal
+            <Cart
                 cartItems={cartItems}
                 toggleCart={toggleCart}
                 isCartHidden={isCartHidden}
+                cartItemsCount={cartItemsCount}
             />
             <h1 className={navStyles['app-nav__logo']}>
                 Gabriel's Bistro
             </h1>
-            <Cart
+            <CartButton
                 toggleCart={toggleCart}
                 cartItemsCount={cartItemsCount}
             />
@@ -32,11 +36,7 @@ const Nav = function ({ cartItems }) {
 };
 
 Nav.propTypes = {
-    cartItems: object
-};
-
-Nav.defaultProps = {
-    cartItems: null
+    cartItems: array,
 };
 
 export default Nav;

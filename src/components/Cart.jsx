@@ -1,31 +1,36 @@
-import { string, func } from "prop-types";
-import Pill from "./Pill";
-import navStyles from "../styles/Nav.module.css";
-import pillStyles from "../styles/Pill.module.css";
+import { createPortal } from "react-dom";
+import { func, array, bool, string } from "prop-types";
+import CartOverlay from "./CartOverlay";
+import CartWindow from "./CartWindow";
 
-const Cart = function ({ cartItemsCount, toggleCart }) {
-    return (
-        <Pill
-            onClick={toggleCart}
-            customClass={`${pillStyles['pill--clickable']}`}
-        >
-            <p className={navStyles['app-nav__text']}>Your Cart</p>
-            <Pill
-                customClass={`${pillStyles['pill--red']} ${pillStyles['pill--small']}`}
-            >
-                <p>{cartItemsCount}</p>
-            </Pill>
-        </Pill>
+const Cart = function ({ toggleCart, cartItems, isCartHidden, cartItemsCount }) {
+    return createPortal(
+        <>
+            <CartOverlay
+                toggleCart={toggleCart}
+                isCartHidden={isCartHidden}
+            />
+            <CartWindow
+                cartItems={cartItems}
+                isCartHidden={isCartHidden}
+                cartItemsCount={cartItemsCount}
+            />
+        </>,
+        document.getElementById('appModals')
     );
 };
 
 Cart.propTypes = {
-    cartItemsCount: string.isRequired,
-    toggleCart: func
+    toggleCart: func,
+    cartItems: array,
+    isCartHidden: bool,
+    cartItemsCount: string.isRequired
 };
 
 Cart.defaultProps = {
-    toggleCart: undefined
+    toggleCart: undefined,
+    cartItems: null,
+    isCartHidden: false
 };
 
 export default Cart;

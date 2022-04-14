@@ -1,9 +1,9 @@
-import { number, array } from "prop-types";
+import { number, array, func } from "prop-types";
 import Card from "./Card";
 import MenuItem from "./MenuItem";
 import cardStyles from "../styles/Card.module.css";
 
-const Menu = function ({ componentYOffset, menuItems }) {
+const Menu = function ({ componentYOffset, menuItems, cartItems, setCartItems }) {
     return (
         <Card
             customClass={`${cardStyles[`card--y-${componentYOffset}px-translated`]} ${cardStyles['card--less-padding']}`}
@@ -16,6 +16,7 @@ const Menu = function ({ componentYOffset, menuItems }) {
                         food={item.foodName}
                         description={item.description}
                         price={item.price}
+                        setCartItems={setCartItems}
                     />
                 );
             })}
@@ -25,7 +26,8 @@ const Menu = function ({ componentYOffset, menuItems }) {
 
 Menu.propTypes = {
     componentYOffset: number.isRequired,
-    menuItems: array.isRequired
+    menuItems: array.isRequired,
+    setCartItems: func.isRequired
 };
 
 export default Menu;
