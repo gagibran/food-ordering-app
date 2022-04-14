@@ -2,10 +2,10 @@ import { bool, object } from "prop-types";
 import Card from "./Card";
 import cardStyles from "../styles/Card.module.css";
 
-const CartItems = function ({ cartItems, showCart }) {
+const CartItems = function ({ cartItems, isCartHidden }) {
     return (
         <Card
-            customClass={`${cardStyles['card--absolute']} ${showCart ? cardStyles['card--hidden'] : ''}`.trim()}
+            customClass={`${cardStyles['card--absolute']} ${isCartHidden ? cardStyles['card--hidden'] : ''}`.trim()}
         >
             {cartItems?.map(cartItem => {
                 return <h3 key={cartItem.id}>{cartItem.itemName}</h3>;
@@ -17,12 +17,12 @@ const CartItems = function ({ cartItems, showCart }) {
 
 CartItems.propTypes = {
     cartItems: object,
-    showCart: bool
+    isCartHidden: bool
 };
 
 CartItems.defaultProps = {
     cartItems: null,
-    showCart: false
+    isCartHidden: false
 };
 
 export default CartItems;

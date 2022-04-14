@@ -3,10 +3,10 @@ import Pill from "./Pill";
 import navStyles from "../styles/Nav.module.css";
 import pillStyles from "../styles/Pill.module.css";
 
-const Cart = function ({ cartItemsCount, onClick }) {
+const Cart = function ({ cartItemsCount, toggleCart }) {
     return (
         <Pill
-            onClick={onClick}
+            onClick={toggleCart}
             customClass={`${pillStyles['pill--clickable']}`}
         >
             <p className={navStyles['app-nav__text']}>Your Cart</p>
@@ -21,11 +21,11 @@ const Cart = function ({ cartItemsCount, onClick }) {
 
 Cart.propTypes = {
     cartItemsCount: string.isRequired,
-    onClick: func
+    toggleCart: func
 };
 
 Cart.defaultProps = {
-    onClick: undefined
+    toggleCart: undefined
 };
 
 export default Cart;

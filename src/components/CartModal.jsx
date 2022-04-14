@@ -3,26 +3,26 @@ import { func, object, bool } from "prop-types";
 import CartOverlay from "./CartOverlay";
 import CartItems from "./CartItems";
 
-const CartModal = function ({ onClick, cartItems, showCart }) {
+const CartModal = function ({ toggleCart, cartItems, isCartHidden }) {
     return createPortal(
         <>
-            <CartOverlay onClick={onClick} showCart={showCart} />
-            <CartItems cartItems={cartItems} showCart={showCart} />
+            <CartOverlay toggleCart={toggleCart} isCartHidden={isCartHidden} />
+            <CartItems cartItems={cartItems} isCartHidden={isCartHidden} />
         </>,
         document.getElementById('appModals')
     );
 };
 
 CartModal.propTypes = {
-    onClick: func,
+    toggleCart: func,
     cartItems: object,
-    showCart: bool
+    isCartHidden: bool
 };
 
 CartModal.defaultProps = {
-    onClick: undefined,
+    toggleCart: undefined,
     cartItems: null,
-    showCart: false
+    isCartHidden: false
 };
 
 export default CartModal;

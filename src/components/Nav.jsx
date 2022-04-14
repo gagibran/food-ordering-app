@@ -6,10 +6,10 @@ import navStyles from "../styles/Nav.module.css";
 
 const Nav = function ({ cartItems }) {
     const cartItemsCount = cartItems?.length > 99 ? '99+' : '0';
-    const [isCartModalHidden, setIsCartModalHidden] = useState(true);
+    const [isCartHidden, setIsCartHidden] = useState(true);
 
-    const toggleCartModal = function () {
-        setIsCartModalHidden(!isCartModalHidden);
+    const toggleCart = function () {
+        setIsCartHidden(!isCartHidden);
         document.body.classList.toggle('no-overflow');
     };
 
@@ -17,14 +17,14 @@ const Nav = function ({ cartItems }) {
         <nav className={navStyles['app-nav']}>
             <CartModal
                 cartItems={cartItems}
-                onClick={toggleCartModal}
-                showCart={isCartModalHidden}
+                toggleCart={toggleCart}
+                isCartHidden={isCartHidden}
             />
             <h1 className={navStyles['app-nav__logo']}>
                 Gabriel's Bistro
             </h1>
             <Cart
-                onClick={toggleCartModal}
+                toggleCart={toggleCart}
                 cartItemsCount={cartItemsCount}
             />
         </nav>

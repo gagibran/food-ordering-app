@@ -1,11 +1,11 @@
 import { string, func, bool } from "prop-types";
 import styles from "../styles/CartOverlay.module.css";
 
-const CartOverlay = function ({ customClass, onClick, showCart }) {
+const CartOverlay = function ({ customClass, toggleCart, isCartHidden }) {
     return (
         <div
-            onClick={onClick}
-            className={`${styles['cart-overlay']} ${showCart ? styles['cart-overlay--hidden'] : ''} ${customClass}`.trim()}
+            onClick={toggleCart}
+            className={`${styles['cart-overlay']} ${isCartHidden ? styles['cart-overlay--hidden'] : ''} ${customClass}`.trim()}
         >
         </div>
     );
@@ -13,14 +13,14 @@ const CartOverlay = function ({ customClass, onClick, showCart }) {
 
 CartOverlay.propTypes = {
     customClass: string,
-    clickHandler: func,
-    showCart: bool
+    toggleCart: func,
+    isCartHidden: bool
 };
 
 CartOverlay.defaultProps = {
     customClass: '',
-    clickHandler: undefined,
-    showCart: false
+    toggleCart: undefined,
+    isCartHidden: false
 };
 
 export default CartOverlay;
