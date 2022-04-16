@@ -1,7 +1,38 @@
-import { number, string } from "prop-types";
+import { number, string, func } from "prop-types";
 import styles from "../styles/CartItem.module.css";
 
-const CartItem = function ({ food, foodAmount, price }) {
+const CartItem = function ({ food, foodAmount, price, setCartItems, cartItems }) {
+    const basePrice = price / foodAmount;
+
+    const addItemHandler = function () {
+        const selectedFoodIndex = cartItems.findIndex(item => item.food === food);
+
+        if (selectedFoodIndex < 0) {
+            return;
+        }
+        cartItems[selectedFoodIndex].foodAmount += 1;
+        cartItems[selectedFoodIndex].price = basePrice * cartItems[selectedFoodIndex].foodAmount;
+
+        setCartItems([...cartItems]);
+    };
+
+    const removeItemHandler = function () {
+
+        const selectedFoodIndex = cartItems.findIndex(item => item.food === food);
+
+        if (selectedFoodIndex < 0) {
+            return;
+        }
+        cartItems[selectedFoodIndex].foodAmount -= 1;
+        cartItems[selectedFoodIndex].price = basePrice * cartItems[selectedFoodIndex].foodAmount;
+
+        if (cartItems[selectedFoodIndex].foodAmount < 1) {
+            cartItems.splice(cartItems[selectedFoodIndex], 1);
+        }
+
+        setCartItems([...cartItems]);
+    };
+
     return (
         <div className={styles['cart-item']}>
             <div className={styles['cart-item__info']}>
@@ -10,8 +41,8 @@ const CartItem = function ({ food, foodAmount, price }) {
             </div>
             <p>x {foodAmount}</p>
             <div className={styles['cart-item__button-group']}>
-                <button>-</button>
-                <button>+</button>
+                <button type="button" onClick={removeItemHandler}>-</button>
+                <button type="button" onClick={addItemHandler}>+</button>
             </div>
             <hr />
         </div>
@@ -21,7 +52,8 @@ const CartItem = function ({ food, foodAmount, price }) {
 CartItem.propTypes = {
     food: string.isRequired,
     foodAmount: number.isRequired,
-    price: number.isRequired
+    price: number.isRequired,
+    setCartItems: func.isRequired
 };
 
 export default CartItem;

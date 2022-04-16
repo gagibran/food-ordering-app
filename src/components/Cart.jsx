@@ -3,7 +3,7 @@ import { func, array, bool, number } from "prop-types";
 import CartOverlay from "./CartOverlay";
 import CartWindow from "./CartWindow";
 
-const Cart = function ({ toggleCart, cartItems, isCartHidden, cartItemsTotalPrice }) {
+const Cart = function ({ setCartItems, toggleCart, cartItems, isCartHidden, cartItemsTotalPrice }) {
     return createPortal(
         <>
             <CartOverlay
@@ -11,6 +11,7 @@ const Cart = function ({ toggleCart, cartItems, isCartHidden, cartItemsTotalPric
                 isCartHidden={isCartHidden}
             />
             <CartWindow
+                setCartItems={setCartItems}
                 cartItems={cartItems}
                 isCartHidden={isCartHidden}
                 cartItemsTotalPrice={cartItemsTotalPrice}
@@ -24,7 +25,8 @@ Cart.propTypes = {
     toggleCart: func,
     cartItems: array,
     isCartHidden: bool,
-    cartItemsTotalPrice: number.isRequired
+    cartItemsTotalPrice: number.isRequired,
+    setCartItems: func.isRequired
 };
 
 Cart.defaultProps = {

@@ -8,7 +8,7 @@ const App = function () {
 
     return (
         <>
-            <Nav cartItems={cartItems} />
+            <Nav cartItems={cartItems} setCartItems={setCartItems} />
             <Header />
             <Content setCartItems={setCartItems} />
         </>

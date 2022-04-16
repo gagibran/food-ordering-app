@@ -1,11 +1,11 @@
-import { bool, array, number } from "prop-types";
+import { bool, array, number, func } from "prop-types";
 import Card from "./Card";
 import CartWindowSummary from "./CartWindowSummary";
 import CartItem from "./CartItem";
 import cardStyles from "../styles/Card.module.css";
 import cartWindowStyles from "../styles/CartWindow.module.css";
 
-const CartWindow = function ({ cartItems, isCartHidden, cartItemsTotalPrice }) {
+const CartWindow = function ({ setCartItems, cartItems, isCartHidden, cartItemsTotalPrice }) {
     const submitHandler = function (e) {
         e.preventDefault();
         console.log('POST request simulation:', cartItems);
@@ -25,6 +25,8 @@ const CartWindow = function ({ cartItems, isCartHidden, cartItemsTotalPrice }) {
                             food={cartItem.food}
                             foodAmount={cartItem.foodAmount}
                             price={cartItem.price}
+                            cartItems={cartItems}
+                            setCartItems={setCartItems}
                         />
                     )
                 })}
@@ -47,7 +49,8 @@ const CartWindow = function ({ cartItems, isCartHidden, cartItemsTotalPrice }) {
 CartWindow.propTypes = {
     cartItems: array,
     isCartHidden: bool,
-    cartItemsTotalPrice: number.isRequired
+    cartItemsTotalPrice: number.isRequired,
+    setCartItems: func.isRequired
 };
 
 CartWindow.defaultProps = {

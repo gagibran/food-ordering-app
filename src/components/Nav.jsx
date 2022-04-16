@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { array } from "prop-types";
+import { array, func } from "prop-types";
 import CartButton from "./CartButton";
 import Cart from "./Cart";
 import navStyles from "../styles/Nav.module.css";
 
-const Nav = function ({ cartItems }) {
+const Nav = function ({ cartItems, setCartItems }) {
     const [isCartHidden, setIsCartHidden] = useState(true);
     let cartItemsCount = '0';
     const totalItems = cartItems.reduce((acc, cartItem) => acc + cartItem.foodAmount, 0);
@@ -19,6 +19,7 @@ const Nav = function ({ cartItems }) {
     return (
         <nav className={navStyles['app-nav']}>
             <Cart
+                setCartItems={setCartItems}
                 cartItems={cartItems}
                 toggleCart={toggleCart}
                 isCartHidden={isCartHidden}
@@ -37,6 +38,7 @@ const Nav = function ({ cartItems }) {
 
 Nav.propTypes = {
     cartItems: array,
+    setCartItems: func.isRequired
 };
 
 export default Nav;
