@@ -4,6 +4,7 @@ import Menu from "./Menu";
 import contentStyles from "../styles/Content.module.css";
 
 const CARDS_Y_OFFSET_BASE = 100;
+
 const MENU_ITEMS = [
     {
         id: 1,

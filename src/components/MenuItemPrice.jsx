@@ -13,14 +13,22 @@ const MenuItemPrice = function ({ inputId, food, price, setCartItems }) {
             return;
         }
 
-        setCartItems(prev => [
-            ...prev,
-            {
-                food,
-                foodAmount: +foodAmount,
-                price: +foodAmount * price
+        setCartItems(previousItem => {
+            let previousItemIndex = previousItem.findIndex(item => item.food === food);
+            if (previousItemIndex >= 0) {
+                previousItem[previousItemIndex].price += +foodAmount * price;
+                previousItem[previousItemIndex].foodAmount += +foodAmount;
+                return [...previousItem];
             }
-        ]);
+            return [
+                ...previousItem,
+                {
+                    food,
+                    foodAmount: +foodAmount,
+                    price: +foodAmount * price
+                }
+            ]
+        });
         setFoodAmount('');
     };
 

@@ -6,18 +6,18 @@ import cardStyles from "../styles/Card.module.css";
 import cartWindowStyles from "../styles/CartWindow.module.css";
 
 const CartWindow = function ({ cartItems, isCartHidden, cartItemsTotalPrice }) {
-    let cartItemsElement = null;
-
     const submitHandler = function (e) {
         e.preventDefault();
     };
 
-    if (cartItems.length === 0) {
-        cartItemsElement = <h2>No items in the shopping cart!</h2>
-    } else {
-        cartItemsElement = (
+    const defineCartItemsElement = function () {
+        if (cartItems.length === 0) {
+            return <h2>No items in the shopping cart!</h2>
+        }
+
+        return (
             <>
-                {cartItems?.map((cartItem, index) => {
+                {cartItems.map((cartItem, index) => {
                     return (
                         <CartItem
                             key={index}
@@ -30,7 +30,7 @@ const CartWindow = function ({ cartItems, isCartHidden, cartItemsTotalPrice }) {
                 <CartWindowSummary cartItemsTotalPrice={cartItemsTotalPrice} />
             </>
         );
-    }
+    };
 
     return (
         <Card
@@ -38,7 +38,7 @@ const CartWindow = function ({ cartItems, isCartHidden, cartItemsTotalPrice }) {
             submitHandler={submitHandler}
             customClass={`${cardStyles['card--absolute']} ${cartWindowStyles['cart-window']} ${isCartHidden ? cardStyles['card--hidden'] : ''}`.trim()}
         >
-            {cartItemsElement}
+            {defineCartItemsElement()}
         </Card>
     );
 };

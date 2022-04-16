@@ -23,14 +23,23 @@
 }
 
 .cart-item > .cart-item__button-group > button:first-of-type {
-    border-right: 1px solid var(--light-dark);
-    border-bottom-left-radius: 6.5px;
-    border-top-left-radius: 6.5px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    border-right: 0.5px solid var(--light-dark);
+    border-left: 1px solid var(--light-dark);
 }
 
 .cart-item > .cart-item__button-group > button:last-of-type {
-    border-bottom-right-radius: 6.5px;
-    border-top-right-radius: 6.5px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    border-right: 1px solid var(--light-dark);
+    border-left: 1px solid var(--light-dark);
+}
+
+.cart-item > .cart-item__button-group > button:first-of-type,
+.cart-item > .cart-item__button-group > button:last-of-type {
+    border-top: 1px solid var(--light-dark);
+    border-bottom: 1px solid var(--light-dark);
 }
 
 .cart-item > .cart-item__info {
@@ -45,7 +54,7 @@
     color: var(--red);
 }
 
-.cart-item > p, .cart-item > .cart-item__button-group {
+.cart-item > p {
     border: 1px solid var(--light-dark);
     border-radius: 10px;
 }
