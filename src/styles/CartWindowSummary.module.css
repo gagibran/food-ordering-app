@@ -16,6 +16,7 @@
     padding-left: 50px;
     padding-right: 50px;
     justify-self: flex-end;
+    font-size: 1.1rem;
 }
 
 .cart-window-summary > p {

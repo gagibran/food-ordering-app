@@ -8,6 +8,7 @@ import cartWindowStyles from "../styles/CartWindow.module.css";
 const CartWindow = function ({ cartItems, isCartHidden, cartItemsTotalPrice }) {
     const submitHandler = function (e) {
         e.preventDefault();
+        console.log('POST request simulation:', cartItems);
     };
 
     const defineCartItemsElement = function () {
