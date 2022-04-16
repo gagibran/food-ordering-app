@@ -30,6 +30,7 @@ button, hr {
 button {
     padding: 0;
     border: none;
+    background-color: inherit;
 }
 
 hr {

@@ -1,16 +1,44 @@
-import { bool, array, string } from "prop-types";
+import { bool, array, number } from "prop-types";
 import Card from "./Card";
+import CartWindowSummary from "./CartWindowSummary";
+import CartItem from "./CartItem";
 import cardStyles from "../styles/Card.module.css";
+import cartWindowStyles from "../styles/CartWindow.module.css";
 
-const CartWindow = function ({ cartItems, isCartHidden, cartItemsCount }) {
+const CartWindow = function ({ cartItems, isCartHidden, cartItemsTotalPrice }) {
+    let cartItemsElement = null;
+
+    const submitHandler = function (e) {
+        e.preventDefault();
+    };
+
+    if (cartItems.length === 0) {
+        cartItemsElement = <h2>No items in the shopping cart!</h2>
+    } else {
+        cartItemsElement = (
+            <>
+                {cartItems?.map((cartItem, index) => {
+                    return (
+                        <CartItem
+                            key={index}
+                            food={cartItem.food}
+                            foodAmount={cartItem.foodAmount}
+                            price={cartItem.price}
+                        />
+                    )
+                })}
+                <CartWindowSummary cartItemsTotalPrice={cartItemsTotalPrice} />
+            </>
+        );
+    }
+
     return (
         <Card
-            customClass={`${cardStyles['card--absolute']} ${isCartHidden ? cardStyles['card--hidden'] : ''}`.trim()}
+            isForm={true}
+            submitHandler={submitHandler}
+            customClass={`${cardStyles['card--absolute']} ${cartWindowStyles['cart-window']} ${isCartHidden ? cardStyles['card--hidden'] : ''}`.trim()}
         >
-            {cartItems?.map((cartItem, index) => {
-                return <h3 key={index}>{cartItem.food}, {cartItem.foodAmount}, {cartItem.price}</h3>;
-            })}
-            <h2>Total Amount: {cartItemsCount}</h2>
+            {cartItemsElement}
         </Card>
     );
 };
@@ -18,7 +46,7 @@ const CartWindow = function ({ cartItems, isCartHidden, cartItemsCount }) {
 CartWindow.propTypes = {
     cartItems: array,
     isCartHidden: bool,
-    cartItemsCount: string.isRequired
+    cartItemsTotalPrice: number.isRequired
 };
 
 CartWindow.defaultProps = {

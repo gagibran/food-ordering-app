@@ -1,9 +1,9 @@
 import { createPortal } from "react-dom";
-import { func, array, bool, string } from "prop-types";
+import { func, array, bool, number } from "prop-types";
 import CartOverlay from "./CartOverlay";
 import CartWindow from "./CartWindow";
 
-const Cart = function ({ toggleCart, cartItems, isCartHidden, cartItemsCount }) {
+const Cart = function ({ toggleCart, cartItems, isCartHidden, cartItemsTotalPrice }) {
     return createPortal(
         <>
             <CartOverlay
@@ -13,7 +13,7 @@ const Cart = function ({ toggleCart, cartItems, isCartHidden, cartItemsCount }) 
             <CartWindow
                 cartItems={cartItems}
                 isCartHidden={isCartHidden}
-                cartItemsCount={cartItemsCount}
+                cartItemsTotalPrice={cartItemsTotalPrice}
             />
         </>,
         document.getElementById('appModals')
@@ -24,7 +24,7 @@ Cart.propTypes = {
     toggleCart: func,
     cartItems: array,
     isCartHidden: bool,
-    cartItemsCount: string.isRequired
+    cartItemsTotalPrice: number.isRequired
 };
 
 Cart.defaultProps = {

@@ -37,3 +37,7 @@
 .card.card--hidden {
     display: none;
 }
+
+.card--text-left {
+    text-align: left;
+}

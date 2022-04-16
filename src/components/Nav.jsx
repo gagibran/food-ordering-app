@@ -6,9 +6,9 @@ import navStyles from "../styles/Nav.module.css";
 
 const Nav = function ({ cartItems }) {
     const [isCartHidden, setIsCartHidden] = useState(true);
-
     let cartItemsCount = '0';
     const totalItems = cartItems.reduce((acc, cartItem) => acc + cartItem.foodAmount, 0);
+    const cartItemsTotalPrice = cartItems.reduce((acc, cartItem) => acc + cartItem.price, 0);
     cartItemsCount = totalItems > 99 ? '99+' : '' + totalItems;
 
     const toggleCart = function () {
@@ -22,7 +22,7 @@ const Nav = function ({ cartItems }) {
                 cartItems={cartItems}
                 toggleCart={toggleCart}
                 isCartHidden={isCartHidden}
-                cartItemsCount={cartItemsCount}
+                cartItemsTotalPrice={cartItemsTotalPrice}
             />
             <h1 className={navStyles['app-nav__logo']}>
                 Gabriel's Bistro

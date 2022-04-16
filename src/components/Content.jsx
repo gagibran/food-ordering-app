@@ -37,7 +37,7 @@ const MENU_ITEMS = [
     },
 ];
 
-const Content = function ({ cartItems, setCartItems }) {
+const Content = function ({ setCartItems }) {
     return (
         <section className={contentStyles['app-content']}>
             <RestaurantDescription

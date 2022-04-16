@@ -1,7 +1,18 @@
-import { node, string } from "prop-types";
+import { node, string, bool, func } from "prop-types";
 import styles from "../styles/Card.module.css";
 
-const Card = function ({ children, customClass }) {
+const Card = function ({ children, customClass, isForm, submitHandler }) {
+    if (isForm) {
+        return (
+            <form
+                className={`${styles['card']} ${customClass}`.trim()}
+                onSubmit={submitHandler}
+            >
+                {children}
+            </form>
+        );
+    }
+
     return (
         <div className={`${styles['card']} ${customClass}`.trim()}>
             {children}
@@ -11,11 +22,15 @@ const Card = function ({ children, customClass }) {
 
 Card.propTypes = {
     children: node,
-    customClass: string
+    customClass: string,
+    isForm: bool,
+    submitHandler: func
 };
 
 Card.defaultProps = {
-    customClass: ''
+    customClass: '',
+    isForm: false,
+    submitHandler: undefined
 };
 
 export default Card;
