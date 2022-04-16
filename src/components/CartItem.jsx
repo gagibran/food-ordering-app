@@ -17,17 +17,17 @@ const CartItem = function ({ food, foodAmount, price, setCartItems, cartItems })
     };
 
     const removeItemHandler = function () {
-
         const selectedFoodIndex = cartItems.findIndex(item => item.food === food);
 
         if (selectedFoodIndex < 0) {
             return;
         }
+
         cartItems[selectedFoodIndex].foodAmount -= 1;
         cartItems[selectedFoodIndex].price = basePrice * cartItems[selectedFoodIndex].foodAmount;
 
         if (cartItems[selectedFoodIndex].foodAmount < 1) {
-            cartItems.splice(cartItems[selectedFoodIndex], 1);
+            cartItems.splice(selectedFoodIndex, 1);
         }
 
         setCartItems([...cartItems]);
@@ -37,7 +37,7 @@ const CartItem = function ({ food, foodAmount, price, setCartItems, cartItems })
         <div className={styles['cart-item']}>
             <div className={styles['cart-item__info']}>
                 <h4>{food}</h4>
-                <p>${price}</p>
+                <p>${price.toFixed(2)}</p>
             </div>
             <p>x {foodAmount}</p>
             <div className={styles['cart-item__button-group']}>
