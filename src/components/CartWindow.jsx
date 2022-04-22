@@ -2,7 +2,7 @@ import { useContext } from "react";
 import Card from "./Card";
 import CartWindowSummary from "./CartWindowSummary";
 import CartItem from "./CartItem";
-import CartContext from "../store/cartContext";
+import { CartContext } from "../store/cartContext";
 import cardStyles from "../styles/Card.module.css";
 import cartWindowStyles from "../styles/CartWindow.module.css";
 

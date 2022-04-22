@@ -1,6 +1,6 @@
 import { number, string, } from "prop-types";
 import { useContext } from "react";
-import CartContext from "../store/cartContext";
+import { CartContext } from "../store/cartContext";
 import styles from "../styles/CartItem.module.css";
 
 const CartItem = function ({ food, foodAmount, price }) {
@@ -13,6 +13,7 @@ const CartItem = function ({ food, foodAmount, price }) {
         if (selectedFoodIndex < 0) {
             return;
         }
+
         cartContext.cartItems[selectedFoodIndex].foodAmount += 1;
         cartContext.cartItems[selectedFoodIndex].price = basePrice * cartContext.cartItems[selectedFoodIndex].foodAmount;
 

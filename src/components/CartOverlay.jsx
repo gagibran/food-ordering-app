@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { string } from "prop-types";
-import CartContext from "../store/cartContext";
+import { CartContext } from "../store/cartContext";
 import styles from "../styles/CartOverlay.module.css";
 
 const CartOverlay = function ({ customClass }) {

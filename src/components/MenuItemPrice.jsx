@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { number, string } from "prop-types";
-import CartContext from "../store/cartContext";
+import { CartContext } from "../store/cartContext";
 import menuItemPriceStyles from "../styles/MenuItemPrice.module.css";
 import pillStyles from "../styles/Pill.module.css";
 

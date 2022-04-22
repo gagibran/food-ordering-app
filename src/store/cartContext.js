@@ -1,6 +1,6 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
-const CartContext = createContext({
+export const CartContext = createContext({
     cartItems: [],
     setCartItems: undefined,
     isCartHidden: true,
@@ -9,4 +9,28 @@ const CartContext = createContext({
     cartItemsTotalPrice: 0
 });
 
-export default CartContext;
+export const CartContextProvider = function ({ children }) {
+    const [cartItems, setCartItems] = useState([]);
+    const [isCartHidden, setIsCartHidden] = useState(true);
+    const cartItemsTotalPrice = cartItems.reduce((acc, cartItem) => acc + cartItem.price, 0);
+
+    const toggleCart = function () {
+        setIsCartHidden(!isCartHidden);
+        document.body.classList.toggle('no-overflow');
+    };
+
+    const contextValue = {
+        cartItems,
+        setCartItems,
+        isCartHidden,
+        setIsCartHidden,
+        toggleCart,
+        cartItemsTotalPrice
+    };
+
+    return (
+        <CartContext.Provider value={contextValue}>
+            {children}
+        </CartContext.Provider>
+    );
+};

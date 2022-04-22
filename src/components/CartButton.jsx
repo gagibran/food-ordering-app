@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import Pill from "./Pill";
-import CartContext from "../store/cartContext";
+import { CartContext } from "../store/cartContext";
 import navStyles from "../styles/Nav.module.css";
 import pillStyles from "../styles/Pill.module.css";
 
