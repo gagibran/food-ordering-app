@@ -1,36 +1,37 @@
-import { bool, array, number, func } from "prop-types";
+import { useContext } from "react";
 import Card from "./Card";
 import CartWindowSummary from "./CartWindowSummary";
 import CartItem from "./CartItem";
+import CartContext from "../store/cartContext";
 import cardStyles from "../styles/Card.module.css";
 import cartWindowStyles from "../styles/CartWindow.module.css";
 
-const CartWindow = function ({ setCartItems, cartItems, isCartHidden, cartItemsTotalPrice }) {
+const CartWindow = function () {
+    const cartContext = useContext(CartContext);
+
     const submitHandler = function (e) {
         e.preventDefault();
-        console.log('POST request simulation:', cartItems);
+        console.log('POST request simulation:', cartContext.cartItems);
     };
 
     const defineCartItemsElement = function () {
-        if (cartItems.length === 0) {
+        if (cartContext.cartItems.length === 0) {
             return <h2>No items in the shopping cart!</h2>
         }
 
         return (
             <>
-                {cartItems.map((cartItem, index) => {
+                {cartContext.cartItems.map((cartItem, index) => {
                     return (
                         <CartItem
                             key={index}
                             food={cartItem.food}
                             foodAmount={cartItem.foodAmount}
                             price={cartItem.price}
-                            cartItems={cartItems}
-                            setCartItems={setCartItems}
                         />
                     )
                 })}
-                <CartWindowSummary cartItemsTotalPrice={cartItemsTotalPrice} />
+                <CartWindowSummary />
             </>
         );
     };
@@ -39,23 +40,11 @@ const CartWindow = function ({ setCartItems, cartItems, isCartHidden, cartItemsT
         <Card
             isForm={true}
             submitHandler={submitHandler}
-            customClass={`${cardStyles['card--absolute']} ${cartWindowStyles['cart-window']} ${isCartHidden ? cardStyles['card--hidden'] : ''}`.trim()}
+            customClass={`${cardStyles['card--absolute']} ${cartWindowStyles['cart-window']} ${cartContext.isCartHidden ? cardStyles['card--hidden'] : ''}`.trim()}
         >
             {defineCartItemsElement()}
         </Card>
     );
-};
-
-CartWindow.propTypes = {
-    cartItems: array,
-    isCartHidden: bool,
-    cartItemsTotalPrice: number.isRequired,
-    setCartItems: func.isRequired
-};
-
-CartWindow.defaultProps = {
-    cartItems: null,
-    isCartHidden: false
 };
 
 export default CartWindow;

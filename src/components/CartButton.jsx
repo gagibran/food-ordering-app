@@ -1,12 +1,19 @@
-import { string, func } from "prop-types";
+import { useContext } from "react";
 import Pill from "./Pill";
+import CartContext from "../store/cartContext";
 import navStyles from "../styles/Nav.module.css";
 import pillStyles from "../styles/Pill.module.css";
 
-const CartButton = function ({ cartItemsCount, toggleCart }) {
+const CartButton = function () {
+    const cartContext = useContext(CartContext);
+
+    const totalItems = cartContext.cartItems.reduce((acc, cartItem) => acc + cartItem.foodAmount, 0);
+    let cartItemsCount = '0';
+    cartItemsCount = totalItems > 99 ? '99+' : '' + totalItems;
+
     return (
         <Pill
-            onClick={toggleCart}
+            onClick={cartContext.toggleCart}
             customClass={`${pillStyles['pill--clickable']}`}
         >
             <p className={navStyles['app-nav__text']}>Your Cart</p>
@@ -17,15 +24,6 @@ const CartButton = function ({ cartItemsCount, toggleCart }) {
             </Pill>
         </Pill>
     );
-};
-
-CartButton.propTypes = {
-    cartItemsCount: string.isRequired,
-    toggleCart: func
-};
-
-CartButton.defaultProps = {
-    toggleCart: undefined
 };
 
 export default CartButton;

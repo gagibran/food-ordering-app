@@ -1,11 +1,15 @@
-import { string, func, bool } from "prop-types";
+import { useContext } from "react";
+import { string } from "prop-types";
+import CartContext from "../store/cartContext";
 import styles from "../styles/CartOverlay.module.css";
 
-const CartOverlay = function ({ customClass, toggleCart, isCartHidden }) {
+const CartOverlay = function ({ customClass }) {
+    const cartContext = useContext(CartContext);
+
     return (
         <div
-            onClick={toggleCart}
-            className={`${styles['cart-overlay']} ${isCartHidden ? styles['cart-overlay--hidden'] : ''} ${customClass}`.trim()}
+            onClick={cartContext.toggleCart}
+            className={`${styles['cart-overlay']} ${cartContext.isCartHidden ? styles['cart-overlay--hidden'] : ''} ${customClass}`.trim()}
         >
         </div>
     );
@@ -13,14 +17,10 @@ const CartOverlay = function ({ customClass, toggleCart, isCartHidden }) {
 
 CartOverlay.propTypes = {
     customClass: string,
-    toggleCart: func,
-    isCartHidden: bool
 };
 
 CartOverlay.defaultProps = {
-    customClass: '',
-    toggleCart: undefined,
-    isCartHidden: false
+    customClass: ''
 };
 
 export default CartOverlay;

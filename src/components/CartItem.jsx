@@ -1,36 +1,39 @@
-import { number, string, func } from "prop-types";
+import { number, string, } from "prop-types";
+import { useContext } from "react";
+import CartContext from "../store/cartContext";
 import styles from "../styles/CartItem.module.css";
 
-const CartItem = function ({ food, foodAmount, price, setCartItems, cartItems }) {
+const CartItem = function ({ food, foodAmount, price }) {
     const basePrice = price / foodAmount;
+    const cartContext = useContext(CartContext);
 
     const addItemHandler = function () {
-        const selectedFoodIndex = cartItems.findIndex(item => item.food === food);
+        const selectedFoodIndex = cartContext.cartItems.findIndex(item => item.food === food);
 
         if (selectedFoodIndex < 0) {
             return;
         }
-        cartItems[selectedFoodIndex].foodAmount += 1;
-        cartItems[selectedFoodIndex].price = basePrice * cartItems[selectedFoodIndex].foodAmount;
+        cartContext.cartItems[selectedFoodIndex].foodAmount += 1;
+        cartContext.cartItems[selectedFoodIndex].price = basePrice * cartContext.cartItems[selectedFoodIndex].foodAmount;
 
-        setCartItems([...cartItems]);
+        cartContext.setCartItems([...cartContext.cartItems]);
     };
 
     const removeItemHandler = function () {
-        const selectedFoodIndex = cartItems.findIndex(item => item.food === food);
+        const selectedFoodIndex = cartContext.cartItems.findIndex(item => item.food === food);
 
         if (selectedFoodIndex < 0) {
             return;
         }
 
-        cartItems[selectedFoodIndex].foodAmount -= 1;
-        cartItems[selectedFoodIndex].price = basePrice * cartItems[selectedFoodIndex].foodAmount;
+        cartContext.cartItems[selectedFoodIndex].foodAmount -= 1;
+        cartContext.cartItems[selectedFoodIndex].price = basePrice * cartContext.cartItems[selectedFoodIndex].foodAmount;
 
-        if (cartItems[selectedFoodIndex].foodAmount < 1) {
-            cartItems.splice(selectedFoodIndex, 1);
+        if (cartContext.cartItems[selectedFoodIndex].foodAmount < 1) {
+            cartContext.cartItems.splice(selectedFoodIndex, 1);
         }
 
-        setCartItems([...cartItems]);
+        cartContext.setCartItems([...cartContext.cartItems]);
     };
 
     return (
@@ -52,8 +55,7 @@ const CartItem = function ({ food, foodAmount, price, setCartItems, cartItems })
 CartItem.propTypes = {
     food: string.isRequired,
     foodAmount: number.isRequired,
-    price: number.isRequired,
-    setCartItems: func.isRequired
+    price: number.isRequired
 };
 
 export default CartItem;

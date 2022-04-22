@@ -1,9 +1,11 @@
-import { useState } from "react";
-import { number, string, func } from "prop-types";
+import { useContext, useState } from "react";
+import { number, string } from "prop-types";
+import CartContext from "../store/cartContext";
 import menuItemPriceStyles from "../styles/MenuItemPrice.module.css";
 import pillStyles from "../styles/Pill.module.css";
 
-const MenuItemPrice = function ({ inputId, food, price, setCartItems }) {
+const MenuItemPrice = function ({ inputId, food, price }) {
+    const cartContext = useContext(CartContext);
     const [foodAmount, setFoodAmount] = useState('');
 
     const formHandler = function (e) {
@@ -13,7 +15,7 @@ const MenuItemPrice = function ({ inputId, food, price, setCartItems }) {
             return;
         }
 
-        setCartItems(previousItems => {
+        cartContext.setCartItems(previousItems => {
             let previousItemIndex = previousItems.findIndex(previousItem => previousItem.food === food);
 
             if (previousItemIndex >= 0) {
@@ -69,7 +71,6 @@ const MenuItemPrice = function ({ inputId, food, price, setCartItems }) {
 MenuItemPrice.propTypes = {
     inputId: number.isRequired,
     food: string.isRequired,
-    setCartItems: func.isRequired,
     price: number.isRequired
 };
 

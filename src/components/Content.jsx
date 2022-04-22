@@ -1,4 +1,3 @@
-import { func } from "prop-types";
 import RestaurantDescription from "./RestaurantDescription";
 import Menu from "./Menu";
 import contentStyles from "../styles/Content.module.css";
@@ -38,23 +37,16 @@ const MENU_ITEMS = [
     },
 ];
 
-const Content = function ({ setCartItems }) {
+const Content = function () {
     return (
         <section className={contentStyles['app-content']}>
-            <RestaurantDescription
-                componentYOffset={CARDS_Y_OFFSET_BASE * 2}
-            />
+            <RestaurantDescription componentYOffset={CARDS_Y_OFFSET_BASE * 2} />
             <Menu
                 componentYOffset={CARDS_Y_OFFSET_BASE}
                 menuItems={MENU_ITEMS}
-                setCartItems={setCartItems}
             />
         </section>
     );
-};
-
-Content.propTypes = {
-    setCartItems: func.isRequired
 };
 
 export default Content;
