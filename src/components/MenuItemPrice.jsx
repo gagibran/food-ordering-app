@@ -26,6 +26,7 @@ const MenuItemPrice = function ({ inputId, food, price }) {
             return [
                 ...previousItems,
                 {
+                    id: inputId,
                     food,
                     foodAmount: +foodAmount,
                     price: +foodAmount * price

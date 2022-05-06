@@ -21,10 +21,10 @@ const CartWindow = function () {
 
         return (
             <>
-                {cartContext.cartItems.map((cartItem, index) => {
+                {cartContext.cartItems.map(cartItem => {
                     return (
                         <CartItem
-                            key={index}
+                            key={cartItem.id}
                             food={cartItem.food}
                             foodAmount={cartItem.foodAmount}
                             price={cartItem.price}
