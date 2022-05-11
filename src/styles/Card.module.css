@@ -34,10 +34,6 @@
     transform: translate(-50%, -50%);
 }
 
-.card.card--hidden {
-    display: none;
-}
-
 .card--text-left {
     text-align: left;
 }

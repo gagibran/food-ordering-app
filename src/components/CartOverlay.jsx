@@ -9,7 +9,7 @@ const CartOverlay = function ({ customClass }) {
     return (
         <div
             onClick={cartContext.toggleCart}
-            className={`${styles['cart-overlay']} ${cartContext.isCartHidden ? styles['cart-overlay--hidden'] : ''} ${customClass}`.trim()}
+            className={`${styles['cart-overlay']} ${customClass}`.trim()}
         >
         </div>
     );

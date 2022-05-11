@@ -40,7 +40,7 @@ const CartWindow = function () {
         <Card
             isForm={true}
             submitHandler={submitHandler}
-            customClass={`${cardStyles['card--absolute']} ${cartWindowStyles['cart-window']} ${cartContext.isCartHidden ? cardStyles['card--hidden'] : ''}`.trim()}
+            customClass={`${cardStyles['card--absolute']} ${cartWindowStyles['cart-window']}`}
         >
             {defineCartItemsElement()}
         </Card>

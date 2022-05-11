@@ -10,7 +10,3 @@
     background-color: var(--overlay-background);
     z-index: 3;
 }
-
-.cart-overlay.cart-overlay--hidden {
-    display: none;
-}
