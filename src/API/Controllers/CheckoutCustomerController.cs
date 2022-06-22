@@ -36,20 +36,7 @@ public class CheckoutCustomerController : BaseController
     [HttpPost]
     public async Task<IActionResult> CreateCheckoutCustomer(CheckoutCustomer checkoutCustomer)
     {
-        var createdCheckoutCustomer = new CheckoutCustomer
-        {
-            Id = Guid.NewGuid(),
-            FirstName = checkoutCustomer.FirstName,
-            LastName = checkoutCustomer.LastName,
-            Email = checkoutCustomer.Email,
-            PhoneNumberWithAreaCode = checkoutCustomer.PhoneNumberWithAreaCode,
-            Address1 = checkoutCustomer.Address1,
-            Address2 = checkoutCustomer.Address2,
-            Zip = checkoutCustomer.Zip,
-            CreatedAt = DateTime.UtcNow,
-            UpdatedAt = null
-        };
-        await _checkoutCustomerRepository.CreateAsync(createdCheckoutCustomer);
+        await _checkoutCustomerRepository.CreateAsync(checkoutCustomer);
         bool wasSaved = await _checkoutCustomerRepository.SaveAsync();
 
         if (!wasSaved)
@@ -57,7 +44,7 @@ public class CheckoutCustomerController : BaseController
             return BadRequest("Failed to create the checkoutCustomer.");
         }
 
-        return CreatedAtAction(nameof(GetCheckoutCustomer), new { id = createdCheckoutCustomer.Id }, createdCheckoutCustomer);
+        return CreatedAtAction(nameof(GetCheckoutCustomer), new { id = checkoutCustomer.Id }, checkoutCustomer);
     }
 
     [HttpPut("{id}")]

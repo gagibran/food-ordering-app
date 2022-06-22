@@ -13,49 +13,34 @@ public class AppDbContextSeeds
         {
             new Dish
             {
-                Id = Guid.NewGuid(),
                 Name = "Risotto alla Milanese",
                 Description = "Risotto with Parmesan & Saffron.",
-                Price = 15.99M,
-                CreatedAt = DateTime.UtcNow,
-                UpdatedAt = null
+                Price = 15.99M
             },
             new Dish
             {
-                Id = Guid.NewGuid(),
                 Name = "Pasta alla Norma",
                 Description = "Sicilian pasta dish with eggplant, marinara and basil.",
-                Price = 10.99M,
-                CreatedAt = DateTime.UtcNow,
-                UpdatedAt = null
+                Price = 10.99M
             },
             new Dish
             {
-                Id = Guid.NewGuid(),
                 Name = "Pizza Margherita",
                 Description = "Tomato sauce, mozzarella and basil.",
-                Price = 11.99M,
-                CreatedAt = DateTime.UtcNow,
-                UpdatedAt = null
+                Price = 11.99M
             },
             new Dish
             {
-                Id = Guid.NewGuid(),
                 Name = "Bistecca alla Fiorentina",
                 Description = "Porterhouse steak done Florentine style.",
-                Price = 25.99M,
-                CreatedAt = DateTime.UtcNow,
-                UpdatedAt = null
+                Price = 25.99M
             },
             new Dish
             {
-                Id = Guid.NewGuid(),
                 Name = "Ragù alla Bolognese",
                 Description = "Pasta with Bolognese sauce.",
-                Price = 7.99M,
-                CreatedAt = DateTime.UtcNow,
-                UpdatedAt = null
-            },
+                Price = 7.99M
+            }
         };
 
         await appDbContext.Dishes.AddRangeAsync(dishes);

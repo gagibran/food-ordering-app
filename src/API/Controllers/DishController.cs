@@ -36,16 +36,7 @@ public class DishController : BaseController
     [HttpPost]
     public async Task<IActionResult> CreateDish(Dish dish)
     {
-        var createdDish = new Dish
-        {
-            Id = Guid.NewGuid(),
-            Name = dish.Name,
-            Description = dish.Description,
-            Price = dish.Price,
-            CreatedAt = DateTime.UtcNow,
-            UpdatedAt = null
-        };
-        await _dishRepository.CreateAsync(createdDish);
+        await _dishRepository.CreateAsync(dish);
         bool wasSaved = await _dishRepository.SaveAsync();
 
         if (!wasSaved)
@@ -53,7 +44,7 @@ public class DishController : BaseController
             return BadRequest("Failed to create the dish.");
         }
 
-        return CreatedAtAction(nameof(GetDish), new { id = createdDish.Id }, createdDish);
+        return CreatedAtAction(nameof(GetDish), new { id = dish.Id }, dish);
     }
 
     [HttpPut("{id}")]
