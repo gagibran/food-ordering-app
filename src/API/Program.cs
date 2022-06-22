@@ -30,7 +30,8 @@ else if (app.Environment.IsDevelopment())
     AppDbContext appDbContext = services.GetRequiredService<AppDbContext>();
     try
     {
-        appDbContext.Database.Migrate();
+        await appDbContext.Database.MigrateAsync();
+        await AppDbContextSeeds.SeedDishesAsync(appDbContext);
     }
     catch (Exception exception)
     {
