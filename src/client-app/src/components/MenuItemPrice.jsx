@@ -8,6 +8,26 @@ const MenuItemPrice = function ({ inputId, food, price }) {
     const cartContext = useContext(CartContext);
     const [foodAmount, setFoodAmount] = useState('');
 
+    const addItemToCart = function (previousItems) {
+        let previousItemIndex = previousItems.findIndex(previousItem => previousItem.food === food);
+
+        if (previousItemIndex >= 0) {
+            previousItems[previousItemIndex].price += +foodAmount * price;
+            previousItems[previousItemIndex].foodAmount += +foodAmount;
+            return [...previousItems];
+        }
+
+        return [
+            ...previousItems,
+            {
+                id: inputId,
+                food,
+                foodAmount: +foodAmount,
+                price: +foodAmount * price
+            }
+        ]
+    };
+
     const formHandler = function (e) {
         e.preventDefault();
 
@@ -15,24 +35,7 @@ const MenuItemPrice = function ({ inputId, food, price }) {
             return;
         }
 
-        cartContext.setCartItems(previousItems => {
-            let previousItemIndex = previousItems.findIndex(previousItem => previousItem.food === food);
-
-            if (previousItemIndex >= 0) {
-                previousItems[previousItemIndex].price += +foodAmount * price;
-                previousItems[previousItemIndex].foodAmount += +foodAmount;
-                return [...previousItems];
-            }
-            return [
-                ...previousItems,
-                {
-                    id: inputId,
-                    food,
-                    foodAmount: +foodAmount,
-                    price: +foodAmount * price
-                }
-            ]
-        });
+        cartContext.setCartItems(addItemToCart);
         setFoodAmount('');
     };
 

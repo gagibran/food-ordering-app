@@ -1,5 +1,5 @@
-import { number, string, } from "prop-types";
 import { useContext } from "react";
+import { number, string } from "prop-types";
 import { CartContext } from "../store/cartContext";
 import styles from "../styles/CartItem.module.css";
 
@@ -10,10 +10,6 @@ const CartItem = function ({ food, foodAmount, price }) {
     const addItemHandler = function () {
         const selectedFoodIndex = cartContext.cartItems.findIndex(item => item.food === food);
 
-        if (selectedFoodIndex < 0) {
-            return;
-        }
-
         cartContext.cartItems[selectedFoodIndex].foodAmount += 1;
         cartContext.cartItems[selectedFoodIndex].price = basePrice * cartContext.cartItems[selectedFoodIndex].foodAmount;
 
@@ -22,10 +18,6 @@ const CartItem = function ({ food, foodAmount, price }) {
 
     const removeItemHandler = function () {
         const selectedFoodIndex = cartContext.cartItems.findIndex(item => item.food === food);
-
-        if (selectedFoodIndex < 0) {
-            return;
-        }
 
         cartContext.cartItems[selectedFoodIndex].foodAmount -= 1;
         cartContext.cartItems[selectedFoodIndex].price = basePrice * cartContext.cartItems[selectedFoodIndex].foodAmount;
