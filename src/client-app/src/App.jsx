@@ -3,7 +3,7 @@ import Header from "./components/Header";
 import Content from "./components/Content";
 import { CartContextProvider } from "./store/cartContext";
 
-const App = function () {
+const App= () => {
     return (
         <CartContextProvider>
             <Nav />

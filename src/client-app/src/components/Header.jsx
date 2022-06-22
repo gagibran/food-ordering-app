@@ -1,11 +1,12 @@
 import styles from "../styles/Header.module.css";
+import italianFood from "../assets/images/italian-food.jpg";
 
-const Header = function () {
+const Header= () => {
     return (
         <header className={styles['app-header']}>
             <img
-                src="https://images.unsplash.com/photo-1577303935007-0d306ee638cf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2040&q=80"
-                alt="Table full of food."
+                src={italianFood}
+                alt="Round cooked pizza by Aurélien Lemasson-Théobald Unsplash."
             />
         </header>
     );

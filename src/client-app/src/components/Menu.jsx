@@ -1,53 +1,45 @@
+import { useCallback, useEffect, useState } from "react";
 import { number } from "prop-types";
 import Card from "./Card";
 import MenuItem from "./MenuItem";
 import cardStyles from "../styles/Card.module.css";
 
-// In a full-stack application, we would fetch this data from a database.
-const MENU_ITEMS = [
-    {
-        id: 1,
-        foodName: 'Risotto alla Milanese',
-        description: 'Risotto with Parmesan & Saffron.',
-        price: 15.99
-    },
-    {
-        id: 2,
-        foodName: 'Pasta alla Norma',
-        description: 'Sicilian pasta dish with eggplant, marinara and basil.',
-        price: 10.99
-    },
-    {
-        id: 3,
-        foodName: 'Pizza Margherita',
-        description: 'Tomato sauce, mozzarella and basil.',
-        price: 11.99
-    },
-    {
-        id: 4,
-        foodName: 'Bistecca alla Fiorentina',
-        description: 'Porterhouse steak done Florentine style.',
-        price: 25.99
-    },
-    {
-        id: 5,
-        foodName: 'Ragù alla Bolognese',
-        description: 'Pasta with Bolognese sauce.',
-        price: 7.99
-    },
-];
+const API_URL = 'http://localhost:5000/api/dish'
 
-const Menu = function ({ componentYOffset }) {
+const Menu = ({ componentYOffset }) => {
+    const [isLoading, setIsLoading] = useState(true);
+    const [dishes, setDishes] = useState([]);
+    
+    const fetchDishesAsync = useCallback(async () => {
+        try {
+            const response = await fetch(API_URL);
+            if (!response.ok) {
+                throw new Error(`Error while fetching ${API_URL}.`);
+            }
+            const dishes = await response.json();
+            setDishes(dishes);
+            setIsLoading(false);
+        } catch (error) {
+            console.log(error);
+        }
+    }, []);
+
+    useEffect(() => {
+        fetchDishesAsync();
+    }, [fetchDishesAsync]);
+
     return (
         <Card
             customClass={`${cardStyles[`card--y-${componentYOffset}px-translated`]} ${cardStyles['card--less-padding']}`}
         >
-            {MENU_ITEMS.map(item => {
+            {isLoading ?
+            <div>Loading</div> : 
+            dishes.map(item => {
                 return (
                     <MenuItem
                         key={item.id}
                         inputId={item.id}
-                        food={item.foodName}
+                        food={item.name}
                         description={item.description}
                         price={item.price}
                     />

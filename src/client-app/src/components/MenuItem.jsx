@@ -3,7 +3,7 @@ import menuItemStyles from "../styles/MenuItem.module.css";
 import MenuItemDescription from "./MenuItemDescription";
 import MenuItemPrice from "./MenuItemPrice";
 
-const MenuItem = function ({ food, description, price, inputId }) {
+const MenuItem = ({ food, description, price, inputId }) => {
     return (
         <div className={menuItemStyles['menu-item']}>
             <MenuItemDescription
@@ -25,7 +25,7 @@ MenuItem.propTypes = {
     food: string.isRequired,
     description: string.isRequired,
     price: number.isRequired,
-    inputId: number.isRequired
+    inputId: string.isRequired
 };
 
 export default MenuItem;

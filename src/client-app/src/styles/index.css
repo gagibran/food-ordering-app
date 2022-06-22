@@ -1,4 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap');
+@font-face {
+    font-family: "Poppins";
+    src: url("../assets/fonts/poppins/Poppins-Regular.ttf");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url("../assets/fonts/poppins/Poppins-Bold.ttf");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url("../assets/fonts/poppins/Poppins-Black.ttf");
+    font-weight: 900;
+}
 
 :root {
     --light: #dddada;

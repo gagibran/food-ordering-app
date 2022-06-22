@@ -4,7 +4,7 @@ import { CartContext } from "../store/cartContext";
 import navStyles from "../styles/Nav.module.css";
 import pillStyles from "../styles/Pill.module.css";
 
-const CartButton = function () {
+const CartButton= () => {
     const cartContext = useContext(CartContext);
 
     const totalItems = cartContext.cartItems.reduce((acc, cartItem) => acc + cartItem.foodAmount, 0);

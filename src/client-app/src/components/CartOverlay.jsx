@@ -3,7 +3,7 @@ import { string } from "prop-types";
 import { CartContext } from "../store/cartContext";
 import styles from "../styles/CartOverlay.module.css";
 
-const CartOverlay = function ({ customClass }) {
+const CartOverlay= ({ customClass }) => {
     const cartContext = useContext(CartContext);
 
     return (

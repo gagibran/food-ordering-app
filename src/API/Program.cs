@@ -2,6 +2,7 @@ using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+var developmentCorsPolicy = "DevelopmentCorsPolicy";
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -9,10 +10,20 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("AppDatabase"));
 });
-builder.Services.AddScoped<IDishesRepository, DishesRepository>();
+builder.Services.AddScoped<IDishRepository, DishRepository>();
+builder.Services.AddScoped<ICheckoutCustomerRepository, CheckoutCustomerRepository>();
 if (builder.Environment.IsDevelopment())
 {
     builder.WebHost.UseUrls("http://+:5000"); // HTTPS doesn't work very well with Docker.
+    builder.Services.AddCors(options =>
+    {
+        options.AddPolicy(developmentCorsPolicy, policy =>
+        {
+            policy.WithOrigins("http://localhost:3000")
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+        });
+    });
 }
 
 WebApplication app = builder.Build();
@@ -27,6 +38,7 @@ if (app.Environment.IsProduction())
 }
 else if (app.Environment.IsDevelopment())
 {
+    app.UseCors(developmentCorsPolicy);
     AppDbContext appDbContext = services.GetRequiredService<AppDbContext>();
     try
     {

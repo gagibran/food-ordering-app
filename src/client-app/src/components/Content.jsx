@@ -4,7 +4,7 @@ import contentStyles from "../styles/Content.module.css";
 
 const CARDS_Y_OFFSET_BASE = 100;
 
-const Content = function () {
+const Content= () => {
     return (
         <section className={contentStyles['app-content']}>
             <RestaurantDescription componentYOffset={CARDS_Y_OFFSET_BASE * 2} />

@@ -4,7 +4,7 @@ import Cart from "./Cart";
 import { CartContext } from "../store/cartContext";
 import navStyles from "../styles/Nav.module.css";
 
-const Nav = function () {
+const Nav= () => {
     const cartContext = useContext(CartContext)
 
     return (

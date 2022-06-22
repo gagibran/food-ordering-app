@@ -44,4 +44,9 @@ public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEnt
 
         _entities.Remove(entityToBeRemoved);
     }
+
+    public async Task<bool> SaveAsync()
+    {
+        return await _appDbContext.SaveChangesAsync() > 0;
+    }
 }

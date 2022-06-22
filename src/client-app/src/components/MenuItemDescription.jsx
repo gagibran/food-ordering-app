@@ -1,7 +1,7 @@
 import { number, string } from "prop-types";
 import styles from "../styles/MenuItemDescription.module.css";
 
-const MenuItemFoodDescription = function ({ food, description, price }) {
+const MenuItemFoodDescription =({ food, description, price }) => {
     return (
         <div className={styles['menu-item-description']}>
             <h4>{food}</h4>

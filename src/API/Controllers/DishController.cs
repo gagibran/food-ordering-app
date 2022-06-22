@@ -5,17 +5,17 @@ namespace API.Controllers;
 
 public class DishController : BaseController
 {
-    private readonly IDishesRepository _dishesRepository;
+    private readonly IDishRepository _dishRepository;
 
-    public DishController(AppDbContext appDbContext, IDishesRepository dishesRepository)
+    public DishController(IDishRepository dishesRepository)
     {
-        _dishesRepository = dishesRepository;
+        _dishRepository = dishesRepository;
     }
 
     [HttpGet]
     public async Task<IActionResult> GetDishes()
     {
-        IEnumerable<Dish> dishes = await _dishesRepository.GetAllAsync();
+        IEnumerable<Dish> dishes = await _dishRepository.GetAllAsync();
         return Ok(dishes);
     }
 
@@ -24,7 +24,7 @@ public class DishController : BaseController
     {
         try
         {
-            Dish dish = await _dishesRepository.GetByIdAsync(id);
+            Dish dish = await _dishRepository.GetByIdAsync(id);
             return Ok(dish);
         }
         catch (NotFoundException)
@@ -45,15 +45,15 @@ public class DishController : BaseController
             CreatedAt = DateTime.UtcNow,
             UpdatedAt = null
         };
-        await _dishesRepository.CreateAsync(createdDish);
-        bool wasSaved = await _dishesRepository.SaveDishesAsync();
+        await _dishRepository.CreateAsync(createdDish);
+        bool wasSaved = await _dishRepository.SaveAsync();
 
         if (!wasSaved)
         {
             return BadRequest("Failed to create the dish.");
         }
 
-        return CreatedAtAction(nameof(GetDish), new { id = createdDish.Id}, createdDish);
+        return CreatedAtAction(nameof(GetDish), new { id = createdDish.Id }, createdDish);
     }
 
     [HttpPut("{id}")]
@@ -61,8 +61,8 @@ public class DishController : BaseController
     {
         try
         {
-            await _dishesRepository.UpdateDishAsync(dish, id);
-            bool wasSaved = await _dishesRepository.SaveDishesAsync();
+            await _dishRepository.UpdateDishAsync(dish, id);
+            bool wasSaved = await _dishRepository.SaveAsync();
 
             if (!wasSaved)
             {
@@ -82,8 +82,8 @@ public class DishController : BaseController
     {
         try
         {
-            await _dishesRepository.DeleteAsync(id);
-            bool wasSaved = await _dishesRepository.SaveDishesAsync();
+            await _dishRepository.DeleteAsync(id);
+            bool wasSaved = await _dishRepository.SaveAsync();
             if (!wasSaved)
             {
                 return BadRequest("Failed to delete the dish.");

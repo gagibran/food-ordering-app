@@ -6,15 +6,15 @@ import { CartContext } from "../store/cartContext";
 import cardStyles from "../styles/Card.module.css";
 import cartWindowStyles from "../styles/CartWindow.module.css";
 
-const CartWindow = function () {
+const CartWindow= () => {
     const cartContext = useContext(CartContext);
 
-    const submitHandler = function (e) {
+    const submitHandler = (e) => {
         e.preventDefault();
         console.log('POST request simulation:', cartContext.cartItems);
     };
 
-    const defineCartItemsElement = function () {
+    const defineCartItemsElement= () => {
         if (cartContext.cartItems.length === 0) {
             return <h2>No items in the shopping cart!</h2>
         }

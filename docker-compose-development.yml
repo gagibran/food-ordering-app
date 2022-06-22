@@ -33,6 +33,7 @@ services:
       - 3000:3000
     environment:
       - NODE_ENV=development
+      - WATCHPACK_POLLING=true
     volumes:
       - ./src/client-app/:/app/
       - /app/node_modules/

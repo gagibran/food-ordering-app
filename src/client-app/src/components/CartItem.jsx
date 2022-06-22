@@ -3,11 +3,11 @@ import { number, string } from "prop-types";
 import { CartContext } from "../store/cartContext";
 import styles from "../styles/CartItem.module.css";
 
-const CartItem = function ({ food, foodAmount, price }) {
+const CartItem = ({ food, foodAmount, price }) => {
     const basePrice = price / foodAmount;
     const cartContext = useContext(CartContext);
 
-    const addItemHandler = function () {
+    const addItemHandler= () => {
         const selectedFoodIndex = cartContext.cartItems.findIndex(item => item.food === food);
 
         cartContext.cartItems[selectedFoodIndex].foodAmount += 1;
@@ -16,7 +16,7 @@ const CartItem = function ({ food, foodAmount, price }) {
         cartContext.setCartItems([...cartContext.cartItems]);
     };
 
-    const removeItemHandler = function () {
+    const removeItemHandler= () => {
         const selectedFoodIndex = cartContext.cartItems.findIndex(item => item.food === food);
 
         cartContext.cartItems[selectedFoodIndex].foodAmount -= 1;

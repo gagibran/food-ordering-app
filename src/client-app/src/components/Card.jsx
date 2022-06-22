@@ -1,7 +1,7 @@
 import { node, string, bool, func } from "prop-types";
 import styles from "../styles/Card.module.css";
 
-const Card = function ({ children, customClass, isForm, submitHandler }) {
+const Card = ({ children, customClass, isForm, submitHandler }) => {
     if (isForm) {
         return (
             <form

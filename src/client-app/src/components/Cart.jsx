@@ -2,7 +2,7 @@ import { createPortal } from "react-dom";
 import CartOverlay from "./CartOverlay";
 import CartWindow from "./CartWindow";
 
-const Cart = function () {
+const Cart= () => {
     return createPortal(
         <>
             <CartOverlay />

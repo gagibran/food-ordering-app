@@ -9,12 +9,12 @@ export const CartContext = createContext({
     cartItemsTotalPrice: 0
 });
 
-export const CartContextProvider = function ({ children }) {
+export const CartContextProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState([]);
     const [isCartHidden, setIsCartHidden] = useState(true);
     const cartItemsTotalPrice = cartItems.reduce((acc, cartItem) => acc + cartItem.price, 0);
 
-    const toggleCart = function () {
+    const toggleCart= () => {
         setIsCartHidden(!isCartHidden);
         document.body.classList.toggle('no-overflow');
     };

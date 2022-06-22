@@ -4,11 +4,11 @@ import { CartContext } from "../store/cartContext";
 import menuItemPriceStyles from "../styles/MenuItemPrice.module.css";
 import pillStyles from "../styles/Pill.module.css";
 
-const MenuItemPrice = function ({ inputId, food, price }) {
+const MenuItemPrice = ({ inputId, food, price }) => {
     const cartContext = useContext(CartContext);
     const [foodAmount, setFoodAmount] = useState('');
 
-    const addItemToCart = function (previousItems) {
+    const addItemToCart = (previousItems) => {
         let previousItemIndex = previousItems.findIndex(previousItem => previousItem.food === food);
 
         if (previousItemIndex >= 0) {
@@ -28,7 +28,7 @@ const MenuItemPrice = function ({ inputId, food, price }) {
         ]
     };
 
-    const formHandler = function (e) {
+    const formHandler = (e) => {
         e.preventDefault();
 
         if (foodAmount === '') {
@@ -39,7 +39,7 @@ const MenuItemPrice = function ({ inputId, food, price }) {
         setFoodAmount('');
     };
 
-    const inputChangeHandler = function (e) {
+    const inputChangeHandler = (e) => {
         setFoodAmount(e.target.value);
     };
 
@@ -73,7 +73,7 @@ const MenuItemPrice = function ({ inputId, food, price }) {
 };
 
 MenuItemPrice.propTypes = {
-    inputId: number.isRequired,
+    inputId: string.isRequired,
     food: string.isRequired,
     price: number.isRequired
 };
